@@ -1,0 +1,22 @@
+---
+galaxy_info:
+  role_name: zabbix_agent
+  author: neoloc
+  description: Install and configure the zabbix agent
+  license: "license (BSD, MIT)"
+  min_ansible_version: "2.4"
+
+  platforms:
+    - name: EL
+      versions:
+        - "8"
+    - name: Debian
+      versions:
+        - bullseye
+    - name: opensuse
+      versions:
+        - all
+    - name: Ubuntu
+      versions:
+        - bionic
+        - focal

@@ -1,0 +1,21 @@
+---
+# handlers file for role
+
+- name: create selinux mod for zabbix_agent
+  ansible.builtin.command:
+    cmd: checkmodule -M -m -o /etc/zabbix/zabbixagent.mod /etc/zabbix/zabbixagent.te
+
+- name: create selinux pp for zabbix_agent
+  ansible.builtin.command:
+    cmd: semodule_package -o /etc/zabbix/zabbixagent.pp -m /etc/zabbix/zabbixagent.mod
+
+- name: load selinux pp for zabbix_agent
+  ansible.builtin.command:
+    cmd: semodule -i /etc/zabbix/zabbixagent.pp
+
+- name: restart zabbix-agent
+  ansible.builtin.service:
+    name: "{{ zabbix_agent_service }}"
+    state: restarted
+  when:
+    - not ansible_check_mode

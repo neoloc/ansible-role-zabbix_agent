@@ -24,6 +24,7 @@ zabbix_agent_server_active_address: zabbix-server
 
 zabbix_agent_hostname: "{{ ansible_fqdn }}"
 zabbix_agent_hostmetadata: system.uname
+zabbix_agent_hostinterface: 10.1.1.10
 zabbix_agent_timeout: 3
 
 # Enable logging of remote commands by setting this value to 1.
